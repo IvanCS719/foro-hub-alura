@@ -24,8 +24,6 @@ public class Topico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
-    @Column(length = 4000)
-    @Size(max = 4000)
     private String mensaje;
     private LocalDateTime fechaCreacion;
     private Boolean estatus;

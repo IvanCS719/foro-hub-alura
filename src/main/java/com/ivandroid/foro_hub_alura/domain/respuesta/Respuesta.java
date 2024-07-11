@@ -26,7 +26,7 @@ public class Respuesta {
     private Topico topico;
     private LocalDateTime fechaCreacion;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "autor_id")
+    @JoinColumn(name = "usuario_id")
     private Usuario autor;
     private Boolean solucion;
 
