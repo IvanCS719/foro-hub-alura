@@ -1,0 +1,1 @@
+ALTER TABLE topicos CHANGE COLUMN fechaCreacion fecha_creacion TIMESTAMP;

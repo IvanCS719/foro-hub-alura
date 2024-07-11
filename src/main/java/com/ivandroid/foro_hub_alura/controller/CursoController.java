@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/curso")
+@RequestMapping("/cursos")
 public class CursoController {
 
     //Inyectando el repositorio jpa
@@ -34,7 +34,7 @@ public class CursoController {
                 curso.getId(), curso.getNombre(), curso.getCategoria());
 
         //Construir la URI del nuevo recurso creado
-        URI url = uriComponentsBuilder.path("/curso/{id}").buildAndExpand(curso.getId()).toUri();
+        URI url = uriComponentsBuilder.path("/cursos/{id}").buildAndExpand(curso.getId()).toUri();
 
         //Devolver una respuesta con el código de estado 201 (CREATED) y el cuerpo con los datos del curso
         return  ResponseEntity.created(url).body(datosRespuestaCurso);
