@@ -1,7 +1,7 @@
 CREATE TABLE usuarios(
     id bigint not null auto_increment,
     nombre varchar(4000) not null,
-    correoElectronico varchar(100) not null,
+    correo_electronico varchar(100) not null unique,
     contrasena varchar(300) not null,
     primary key(id)
 );
