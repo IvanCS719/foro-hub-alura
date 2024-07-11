@@ -26,4 +26,9 @@ public class Curso {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
     private List<Topico> topicos;
+
+    public Curso(DastosRegistroCurso dastosRegistroCurso) {
+        this.nombre = dastosRegistroCurso.nombre();
+        this.categoria = dastosRegistroCurso.categoria();
+    }
 }
