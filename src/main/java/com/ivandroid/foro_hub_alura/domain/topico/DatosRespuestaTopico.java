@@ -12,12 +12,11 @@ public record DatosRespuestaTopico(
         LocalDateTime fechaCreacion,
         Boolean estatus,
         String autor,
-        String curso,
-        List<Respuesta> respuestas
+        String curso
 ) {
     public DatosRespuestaTopico(Topico topico) {
         this(topico.getId(), topico.getTitulo(), topico.getMensaje(),
                 topico.getFechaCreacion(), topico.getEstatus(), topico.getAutor().getNombre(),
-                topico.getCurso().getNombre(), topico.getRespuestas());
+                topico.getCurso().getNombre());
     }
 }
