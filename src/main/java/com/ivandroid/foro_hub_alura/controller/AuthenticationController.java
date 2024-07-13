@@ -3,6 +3,7 @@ package com.ivandroid.foro_hub_alura.controller;
 import com.ivandroid.foro_hub_alura.domain.user.DatosAutenticacionUsuario;
 import com.ivandroid.foro_hub_alura.domain.user.Usuario;
 import com.ivandroid.foro_hub_alura.domain.user.UsuarioRepository;
+import com.ivandroid.foro_hub_alura.infrastructure.security.DatosJWTToken;
 import com.ivandroid.foro_hub_alura.infrastructure.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,6 @@ public class AuthenticationController {
 
         var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
 
-        return ResponseEntity.ok(JWTtoken);
+        return ResponseEntity.ok(new DatosJWTToken(JWTtoken));
     }
 }
