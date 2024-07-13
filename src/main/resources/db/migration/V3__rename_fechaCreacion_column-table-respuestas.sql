@@ -1,0 +1,1 @@
+ALTER TABLE respuestas CHANGE COLUMN fechaCreacion fecha_creacion TIMESTAMP;

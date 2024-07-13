@@ -1,8 +1,7 @@
 package com.ivandroid.foro_hub_alura.controller;
 
 import com.ivandroid.foro_hub_alura.domain.topico.*;
-import com.ivandroid.foro_hub_alura.domain.topico.service.DatosActualizarTopicoService;
-import com.ivandroid.foro_hub_alura.domain.topico.service.DatosRegistroTopicoService;
+import com.ivandroid.foro_hub_alura.domain.topico.service.DatosTopicoService;
 import com.ivandroid.foro_hub_alura.infrastructure.error.IntegrityValidation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +26,7 @@ public class TopicoController {
 
     //Iyectando el servicio para validar el registro
     @Autowired
-    private DatosRegistroTopicoService datosRegistroTopicoService;
-
-    @Autowired
-    private DatosActualizarTopicoService datosActualizarTopicoService;
+    private DatosTopicoService datosTopicoService;
 
     //Endpoint para registrar un nuevo topico
     @PostMapping
@@ -38,7 +34,7 @@ public class TopicoController {
                                                           UriComponentsBuilder uriComponentsBuilder){
 
         //Registrando el nuevo topico
-        var response = datosRegistroTopicoService.registrar(datos);
+        var response = datosTopicoService.registrar(datos);
 
         //Construir la URI del nuevo recurso creado
         URI uri = uriComponentsBuilder.path("/topicos/{id}")
@@ -92,14 +88,29 @@ public class TopicoController {
         throw new IntegrityValidation("El topico no fue encontrado");
     }
 
+    //Endpoint para actulizar un topico
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<DatosRespuestaTopico> actualizar(@RequestBody @Valid DatosActulizarTopico datos,
                            @PathVariable Long id){
 
-        var response = datosActualizarTopicoService.actualizar(datos, id);
+        //Se llama al servicio para validar y actualizar el topico, el cual retorna record DatosRespuestaTopico
+        var response = datosTopicoService.actualizar(datos, id);
 
-        return ResponseEntity.ok().body(response);
+        //Devolviendo una respuesta con el código de estado 200 (ok) y con los datos del topico actualizado
+        return ResponseEntity.ok(response);
 
+    }
+
+    //Endpoint para eliminar un topico
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Topico> eliminar(@PathVariable Long id){
+
+        //Se llama al servicio para validar y eliminar el topico
+        datosTopicoService.eliminar(id);
+
+        //Devolviendo una respuesta con el código de estado 204 (noContent) sin contenido
+        return ResponseEntity.noContent().build();
     }
 }
