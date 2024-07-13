@@ -3,6 +3,7 @@ package com.ivandroid.foro_hub_alura.controller;
 import com.ivandroid.foro_hub_alura.domain.user.DatosAutenticacionUsuario;
 import com.ivandroid.foro_hub_alura.domain.user.Usuario;
 import com.ivandroid.foro_hub_alura.domain.user.UsuarioRepository;
+import com.ivandroid.foro_hub_alura.infrastructure.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,17 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity autenticarUsuario(@RequestBody @Valid DatosAutenticacionUsuario datos){
-        Authentication token = new UsernamePasswordAuthenticationToken(
+        Authentication authToken = new UsernamePasswordAuthenticationToken(
                 datos.correoElectronico(), datos.contrasena());
-        authenticationManager.authenticate(token);
+        authenticationManager.authenticate(authToken);
 
-        return ResponseEntity.ok().build();
+        var JWTtoken = tokenService.generarToken();
+
+        return ResponseEntity.ok(JWTtoken);
     }
 }
