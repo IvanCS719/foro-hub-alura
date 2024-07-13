@@ -37,4 +37,10 @@ public class Topico {
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY)
     private List<Respuesta> respuestas;
+
+
+    public void actulizar(DatosActulizarTopico datos){
+        if(datos.titulo() != null) this.titulo = datos.titulo();
+        if(datos.mensaje() != null) this.mensaje = datos.mensaje();
+    }
 }

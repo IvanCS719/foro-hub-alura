@@ -6,7 +6,7 @@ import com.ivandroid.foro_hub_alura.domain.topico.DatosRegistroTopico;
 import com.ivandroid.foro_hub_alura.domain.topico.DatosRespuestaTopico;
 import com.ivandroid.foro_hub_alura.domain.topico.Topico;
 import com.ivandroid.foro_hub_alura.domain.topico.TopicoRepository;
-import com.ivandroid.foro_hub_alura.domain.topico.validation.IValidadorDeTopicos;
+import com.ivandroid.foro_hub_alura.domain.topico.validationRisgistroTopicos.IValidadorDeTopicosRegistro;
 import com.ivandroid.foro_hub_alura.domain.user.Usuario;
 import com.ivandroid.foro_hub_alura.domain.user.UsuarioRepository;
 import com.ivandroid.foro_hub_alura.infrastructure.error.IntegrityValidation;
@@ -22,7 +22,7 @@ import java.util.Optional;
 public class DatosRegistroTopicoService {
 
     @Autowired
-    List<IValidadorDeTopicos> validadorDeTopicos;
+    List<IValidadorDeTopicosRegistro> validadorDeTopicos;
 
     @Autowired
     UsuarioRepository usuarioRepository;

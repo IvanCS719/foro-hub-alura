@@ -1,4 +1,4 @@
-package com.ivandroid.foro_hub_alura.domain.topico.validation;
+package com.ivandroid.foro_hub_alura.domain.topico.validationRisgistroTopicos;
 
 import com.ivandroid.foro_hub_alura.domain.topico.DatosRegistroTopico;
 import com.ivandroid.foro_hub_alura.domain.topico.TopicoRepository;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 //Regla de negocio
 @Component
-public class DatosRepetidos implements IValidadorDeTopicos{
+public class DatosRepetidosRegistro implements IValidadorDeTopicosRegistro {
 
     //Inyeccion del repositorio jpa de Topico
     @Autowired
