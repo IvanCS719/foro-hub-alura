@@ -32,9 +32,9 @@ public class AuthenticationController {
     public ResponseEntity autenticarUsuario(@RequestBody @Valid DatosAutenticacionUsuario datos){
         Authentication authToken = new UsernamePasswordAuthenticationToken(
                 datos.correoElectronico(), datos.contrasena());
-        authenticationManager.authenticate(authToken);
+        var usuarioAutenticado = authenticationManager.authenticate(authToken);
 
-        var JWTtoken = tokenService.generarToken();
+        var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
 
         return ResponseEntity.ok(JWTtoken);
     }
