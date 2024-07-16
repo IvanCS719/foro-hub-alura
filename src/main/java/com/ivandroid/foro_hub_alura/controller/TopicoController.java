@@ -3,6 +3,7 @@ package com.ivandroid.foro_hub_alura.controller;
 import com.ivandroid.foro_hub_alura.domain.topico.*;
 import com.ivandroid.foro_hub_alura.domain.topico.service.DatosTopicoService;
 import com.ivandroid.foro_hub_alura.infrastructure.error.IntegrityValidation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/topicos")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     //Iyectando repositorio jpa

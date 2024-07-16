@@ -5,6 +5,7 @@ import com.ivandroid.foro_hub_alura.domain.user.Usuario;
 import com.ivandroid.foro_hub_alura.domain.user.UsuarioRepository;
 import com.ivandroid.foro_hub_alura.infrastructure.security.DatosJWTToken;
 import com.ivandroid.foro_hub_alura.infrastructure.security.TokenService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/login")
+@Tag(name = "Autenticacion", description = "obtiene el token para el usuario asignado que da acceso al resto de endpoint")
 public class AuthenticationController {
 
     @Autowired

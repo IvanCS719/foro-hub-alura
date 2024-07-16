@@ -4,6 +4,7 @@ import com.ivandroid.foro_hub_alura.domain.curso.Curso;
 import com.ivandroid.foro_hub_alura.domain.curso.CursoRepository;
 import com.ivandroid.foro_hub_alura.domain.curso.DastosRegistroCurso;
 import com.ivandroid.foro_hub_alura.domain.curso.DatosRespuestaCurso;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/cursos")
+@SecurityRequirement(name = "bearer-key")
 public class CursoController {
 
     //Inyectando el repositorio jpa
