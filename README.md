@@ -33,6 +33,12 @@ Desafio de para registrar tópicos sobre dudas de cursos de tecnoligía en una b
 
 [foroHub.webm](https://github.com/user-attachments/assets/9889c1e7-4abb-4742-83fb-abc44ee61c1c)
 
+## :book: Documentación con OpenApi
+Puede visualizar las funciones de los endpoits de la api en su maquina local con la siguente url: `http://localhost:8080/swagger-ui/index.html`
+
+![OpenApi](https://github.com/user-attachments/assets/9940d33e-341e-4c95-a9bb-095b6cbbaab2)
+
+
 ## :computer: Tecnologías utilizadas
 
 * Java 17
